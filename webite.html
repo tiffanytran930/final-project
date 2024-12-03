@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Recommendation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        select, button {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+        }
+        .radio-group {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+        .radio-group label {
+            flex: 1;
+            text-align: center;
+        }
+        .radio-group input {
+            margin-right: 5px;
+        }
+        button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Restaurant Recommendation</h1>
+    <form id="restaurant-form">
+        <!-- Cuisine Dropdown -->
+        <label for="cuisine">Choose Cuisine:</label>
+        <select id="cuisine" name="cuisine">
+            <option value="vietnamese">Vietnamese</option>
+            <option value="fusion">Fusion</option>
+            <option value="mediterranean">Mediterranean</option>
+            <option value="american">American</option>
+            <option value="asian">Asian</option>
+            <option value="european">European</option>
+            <option value="italian">Italian</option>
+            <option value="indian">Indian</option>
+            <option value="japanese">Japanese</option>
+            <option value="chinese">Chinese</option>
+            <option value="mexican">Mexican</option>
+        </select>
+
+        <!-- Price Dropdown -->
+        <label for="price">Price Range:</label>
+        <select id="price" name="price">
+            <option value="$">$</option>
+            <option value="$$">$$</option>
+            <option value="$$$">$$$</option>
+        </select>
+
+        <!-- Ambiance Radio Buttons -->
+        <label>Ambiance:</label>
+        <div class="radio-group">
+            <label><input type="radio" name="ambiance" value="classy" required> Classy</label>
+            <label><input type="radio" name="ambiance" value="casual"> Casual</label>
+        </div>
+
+        <!-- Time Dropdown -->
+        <label for="time">Time of Day:</label>
+        <select id="time" name="time">
+            <option value="breakfast">Breakfast</option>
+            <option value="lunch">Lunch</option>
+            <option value="dinner">Dinner</option>
+            <option value="dessert">Dessert</option>
+            <option value="all">All</option>
+        </select>
+
+        <!-- Submit Button -->
+        <button type="submit">Find Restaurant</button>
+    </form>
+
+    <script>
+        document.getElementById('restaurant-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const cuisine = document.getElementById('cuisine').value;
+            const price = document.getElementById('price').value;
+            const ambiance = document.querySelector('input[name="ambiance"]:checked').value;
+            const time = document.getElementById('time').value;
+
+            alert(`Searching for a ${ambiance} ${cuisine} restaurant with a ${price} price range for ${time}.`);
+            // This is where you would add backend integration to fetch restaurant recommendations
+        });
+    </script>
+
+</body>
+</html>
